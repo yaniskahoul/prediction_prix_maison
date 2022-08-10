@@ -9,28 +9,28 @@ pd.options.display.max_columns = 150
 st.title("Prediction de prix d'une maison")
 
 
-sqft_living = st.number_input('Surface en squarefeet', key ='sqft_living')
+sqft_living = st.number_input('Surface en squarefeet', value = 300,  key ='sqft_living')
 st.write('La surface est de', sqft_living, "squarefeet")
 
 
-bedrooms = st.number_input('Nombre de chambres', key = 'bedrooms')
+bedrooms = st.number_input('Nombre de chambres', value = 1,  key = 'bedrooms')
 st.write('Il y a', bedrooms, "chambres")
 
 
-bathrooms = st.number_input('Nombre de salle de bains', key = 'bathrooms')
+bathrooms = st.number_input('Nombre de salle de bains', value = 1,  key = 'bathrooms')
 st.write('Il y a', bathrooms, "salle de bains")
 
 
-sqft_lot = st.slider("Surface du jardin" , 0, 2200000, 100,  key = 'sqft_lot')
+sqft_lot = st.slider("Surface du jardin" , 0, 2200000, 500,  key = 'sqft_lot')
 st.write("La surface du jardin est de " , sqft_lot)
 
 
 
-floors = st.number_input("Nombre d'étage", key = 'floors')
+floors = st.number_input("Nombre d'étage", value = 1, key = 'floors')
 st.write('Il y a', floors, 'étage(s)' )
 
 
-waterfront = st.radio("Possede t-elle une vue sur la mer?" , ('Yes', 'No'),  key = 'waterfront' ) 
+waterfront = st.radio("Possede t-elle une vue sur la mer?" , ('Oui', 'Non'),  key = 'waterfront' ) 
 
 if waterfront == 'Yes': 
     waterfront = 1
@@ -38,7 +38,7 @@ else:
     waterfront = 0
     
 
-view =  st.slider('Notez la vue de 0 à 4', 0, 4, 2,  key = 'view')
+view =  st.slider('Notez la vue de 0 à 4', 0, 4, 2, key = 'view')
 st.write("La vue est de" , view , "sur 4.")
 
 
@@ -71,7 +71,7 @@ st.write('Le bien a été rénové en', yr_renovated )
 
 zipcode = st.selectbox(
      'Quel est le code postal?',
-     ("79236",
+     (
 "98001",
 "98002",
 "98003",
@@ -198,10 +198,10 @@ st.write('Le code postal est ', zipcode)
 
 
 
-lat = st.number_input("Entrez la latitude du bien",   key = 'lat')
+lat = st.number_input("Entrez la latitude du bien", value = 47,  key = 'lat')
 st.write('lat:', lat) 
 
-long = st.number_input("Entrez la longitude du bien",    key = 'long')
+long = st.number_input("Entrez la longitude du bien",  value = -122,  key = 'long')
 st.write('long:', long) 
 
 
