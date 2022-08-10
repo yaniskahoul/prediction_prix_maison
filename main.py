@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np 
 import pandas as pd 
 import pickle 
+from PIL import Image
 
 pd.options.display.max_columns = 150 
 
@@ -256,3 +257,7 @@ if st.button('Estimez le prix de votre bien'):
 
     prix = round(prediction[0][0],2)
     st.write('# Le prix du bien immobilier est:', prix, "$")
+    
+# Image
+img = Image.open("maison.jpg")
+st.image(img, width=700, caption='House in king county')
