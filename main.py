@@ -205,6 +205,7 @@ long = st.number_input("Entrez la longitude du bien",  value = -122,  key = 'lon
 st.write('long:', long) 
 
 
+year = st.slider('Année de mise en vente', 2022, 2026, 2022,    key = 'year')
 
 month = st.slider('Mois de mise en vente', 1, 12, 6,  key = 'month')
 
@@ -227,6 +228,7 @@ data = {
     'zipcode':zipcode,
     'lat':lat,
     'long':long,
+    'year':year,
     'month':month
 }
 
