@@ -13,18 +13,17 @@ sqft_living = st.number_input('Surface en squarefeet', key ='sqft_living')
 st.write('La surface est de', sqft_living, "squarefeet")
 
 
-bedrooms = st.selectbox(
-    'Nombre de chambres ',
-    ('0', '1', '2','3','4','5','6', '7', '8','9','10', '11','12') , key = 'bedrooms')
-st.write('Il y a', bedrooms, "chambre(s)")
+bedrooms = st.number_input('Nombre de chambres', key = 'bedrooms')
+st.write('Il y a', bedrooms, "chambres")
 
 
 bathrooms = st.number_input('Nombre de salle de bains', key = 'bathrooms')
 st.write('Il y a', bathrooms, "salle de bains")
 
 
-sqft_lot = st.number_input('Surface du jardin', key = 'sqft_lot')
-st.write('La surface du jardin est de ', sqft_lot)
+sqft_lot = st.slider("Surface du jardin" , 0, 2200000, 100,  key = 'sqft_lot')
+st.write("La surface du jardin est de " , sqft_lot)
+
 
 
 floors = st.number_input("Nombre d'étage", key = 'floors')
@@ -52,12 +51,11 @@ grade = st.slider(
 st.write("Le grade est de" , grade , "sur 13.")
 
 
-sqft_above = st.number_input('Superficie en squarefeet de la surface qui se situe au rez-de-chaussée ainsi que dans les étages',   key = 'sqft_above')
+sqft_above = st.slider("Superficie en squarefeet de la surface qui se situe au rez-de-chaussée ainsi que dans les étages" , 0, 22000, 100, key = 'sqft_above')
 st.write('Cette surface est de', sqft_above)
 
 
-
-sqft_basement = st.number_input('Superficie en squarefeet de la surface qui se situe en dessous du rez-de-chaussée',   key = 'sqft_basement')
+sqft_basement = st.slider('Superficie en squarefeet de la surface qui se situe en dessous du rez-de-chaussée',  0, 22000, 100 , key = 'sqft_basement')
 st.write('Cette surface est de', sqft_basement)
 
 
@@ -69,8 +67,135 @@ yr_renovated = st.slider("Année de rénovation, indiquez 0 si il n'y a jamais e
 st.write('Le bien a été rénové en', yr_renovated )
 
 
-zipcode = st.number_input("Entrez votre code postal",   key = 'zipcode')
+
+
+zipcode = st.selectbox(
+     'Quel est le code postal?',
+     ("79236",
+"98001",
+"98002",
+"98003",
+"98004",
+"98005",
+"98006",
+"98007",
+"98008",
+"98009",
+"98010",
+"98011",
+"98013",
+"98014",
+"98015",
+"98019",
+"98022",
+"98023",
+"98024",
+"98025",
+"98027",
+"98028",
+"98029",
+"98030",
+"98031",
+"98032",
+"98033",
+"98034",
+"98035",
+"98038",
+"98039",
+"98040",
+"98041",
+"98042",
+"98045",
+"98047",
+"98050",
+"98051",
+"98052",
+"98053",
+"98055",
+"98056",
+"98057",
+"98058",
+"98059",
+"98062",
+"98063",
+"98064",
+"98065",
+"98070",
+"98071",
+"98072",
+"98073",
+"98074",
+"98075",
+"98077",
+"98083",
+"98089",
+"98092",
+"98093",
+"98101",
+"98102",
+"98103",
+"98104",
+"98105",
+"98106",
+"98107",
+"98108",
+"98109",
+"98111",
+"98112",
+"98113",
+"98114",
+"98115",
+"98116",
+"98117",
+"98118",
+"98119",
+"98121",
+"98122",
+"98124",
+"98125",
+"98126",
+"98127",
+"98129",
+"98131",
+"98133",
+"98134",
+"98136",
+"98138",
+"98139",
+"98141",
+"98144",
+"98145",
+"98146",
+"98148",
+"98154",
+"98155",
+"98158",
+"98160",
+"98161",
+"98164",
+"98165",
+"98166",
+"98168",
+"98170",
+"98174",
+"98175",
+"98177",
+"98178",
+"98181",
+"98185",
+"98188",
+"98190",
+"98191",
+"98194",
+"98195",
+"98198",
+"98199",
+"98224",
+"98288"),  key = 'zipcode')
 st.write('Le code postal est ', zipcode)
+
+
+
 
 
 lat = st.number_input("Entrez la latitude du bien",   key = 'lat')
@@ -114,8 +239,13 @@ X = pd.read_csv("/home/kahoul/Bureau/projet_final/df_modelisation.csv")
 y = pd.read_csv("/home/kahoul/Bureau/projet_final/df_modelisation_price.csv")
 
 
+
+parametres['zipcode'] = parametres['zipcode'].astype(str)
+parametres['month'] = parametres['month'].astype(str)
+
 pickle_in = open('my_pipe_lr.pkl', 'rb') 
 my_pipe_lr = pickle.load(pickle_in)
+
 
 
 if st.button('Estimez le prix de votre bien'):
