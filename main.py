@@ -235,7 +235,7 @@ data = {
 parametres = pd.DataFrame(data, index=[0])
 
 
-X = pd.read_csv("df_modelisation.csv")
+X = pd.read_csv("df_cleaned.csv")
 y = pd.read_csv("df_modelisation_price.csv")
 
 
